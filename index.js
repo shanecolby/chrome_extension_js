@@ -9,19 +9,24 @@ const ulEl = document.getElementById("ul-el")
 // console.log(leads)
 
 // localStorage.clear()
+console.log(localStorage)
 
-let leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"))
+const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"))
 console.log(leadsFromLocalStorage)
 
+const deleteBtn = document.getElementById("delete-btn")
 
-inputBtn.addEventListener("click", function () {
-  myLeads.push(inputEl.value)
-  inputEl.value = ""
-  localStorage.setItem("myLeads", JSON.stringify(myLeads))
-
+deleteBtn.addEventListener("dblclick", function () {
+  console.log("clicked")
+  localStorage.clear()
+  myLeads = []
   renderLeads()
-  console.log(localStorage.getItem("myLeads"))
 })
+
+if (leadsFromLocalStorage) {
+  myLeads = leadsFromLocalStorage
+  renderLeads()
+}
 
 function renderLeads() {
   let listItems = ""
@@ -42,4 +47,17 @@ function renderLeads() {
   }
   ulEl.innerHTML = listItems
 }
+
+
+
+
+inputBtn.addEventListener("click", function () {
+  myLeads.push(inputEl.value)
+  inputEl.value = ""
+  localStorage.setItem("myLeads", JSON.stringify(myLeads))
+
+  renderLeads()
+  console.log(localStorage.getItem("myLeads"))
+})
+
 
