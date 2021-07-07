@@ -15,13 +15,21 @@ const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"))
 console.log(leadsFromLocalStorage)
 
 const deleteBtn = document.getElementById("delete-btn")
-
-
+const tabBtn = document.getElementById("tab-btn")
 
 if (leadsFromLocalStorage) {
   myLeads = leadsFromLocalStorage
   render(myLeads)
 }
+
+const tabs = [
+  { url: "https://www.linkedin.com/in/shane-colby/" }
+]
+
+tabBtn.addEventListener("click", function () {
+  console.log(tabs[0].url)
+})
+
 
 function render(leads) {
   let listItems = ""
